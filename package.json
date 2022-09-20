@@ -1,14 +1,8 @@
 {
-  "name": "flowbite-next-starter",
+  "name": "third-time-games-leaderboard-client",
   "version": "0.0.0",
-  "homepage": "https://github.com/tulupinc/flowbite-next-starter",
-  "bugs": "https://github.com/tulupinc/flowbite-next-starter/issues",
   "license": "MIT",
-  "author": "Conner Davis <conner@tulup.io>",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/tulupinc/flowbite-next-starter.git"
-  },
+  "author": "Jeffrey Wilson <jeffrey.wilson.moonshot@gmail.com>",
   "scripts": {
     "build": "next build",
     "dev": "next dev",
