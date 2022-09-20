@@ -30,14 +30,14 @@ const LeaderboardTable = () => {
     []
   )
 
-  // make refresh request
+  // makes refresh request
   const handleRefresh = useCallback(() => {
     if (eventName && range && status === 'resolved' && !isRefreshing) {
       fetchData(eventName, range, 1, -1)
       setPrevPage(-1)
       setSortOrder(-1)
 
-      // prevent refreshing continuously
+      // prevents refreshing continuously
       setIsRefreshing(true)
       const hd = setTimeout(() => {
         setIsRefreshing(false)
@@ -46,7 +46,7 @@ const LeaderboardTable = () => {
     }
   }, [eventName, range, status, isRefreshing])
 
-  // fetch next page data
+  // fetches next page data
   const handleNext = useCallback(() => {
     if (eventName && range && Number(nextPage) > 1) {
       fetchData(eventName, range, nextPage, sortOrder)
@@ -54,7 +54,7 @@ const LeaderboardTable = () => {
     }
   }, [nextPage, eventName, range, sortOrder])
 
-  // fetch previous page data
+  // fetches previous page data
   const handleBefore = useCallback(() => {
     if (eventName && range) {
       if (Number(nextPage) > 2)
@@ -65,13 +65,13 @@ const LeaderboardTable = () => {
     }
   }, [nextPage, eventName, range, sortOrder])
 
-  // change sort order
+  // changes sort order
   const handleChangeRank = useCallback(() => {
     if (sortOrder === -1) setSortOrder(1)
     else setSortOrder(-1)
   }, [sortOrder])
 
-  // fetch data when changing event name and range
+  // fetches data when changing event name and range
   useEffect(() => {
     if (eventName && range) {
       fetchData(eventName, range, 1, sortOrder)
@@ -84,13 +84,13 @@ const LeaderboardTable = () => {
     }
   }, [eventName, range])
 
-  // disable before button if it is not needed
+  // disables before button if it is not needed
   const beforeDisabled = useMemo(
     () => Boolean(!eventName || !range || !nextPage || nextPage === 2),
     [nextPage, eventName, range]
   )
 
-  // disable next button if it is not needed
+  // disables next button if it is not needed
   const nextDisabled = useMemo(
     () => Boolean(!eventName || !range || !nextPage || nextPage < 2),
     [nextPage, eventName, range]
