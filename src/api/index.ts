@@ -13,7 +13,7 @@ export const fetchDataByEvent = (
   sortOrder: number
 ) => {
   return fetch(
-    `${BACKEND_API}/gamer?event_name=${event}&view=${view}&page=${page}&size=${size}&sortOrder=${sortOrder}`
+    `${BACKEND_API}/leaderboard?event_name=${event}&view=${view}&page=${page}&size=${size}&sortOrder=${sortOrder}`
   )
     .then((response: Response) => {
       if (!response.ok) {

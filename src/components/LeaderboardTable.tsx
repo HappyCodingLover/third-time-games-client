@@ -22,6 +22,14 @@ const LeaderboardTable = () => {
     return -1
   }, [data])
 
+  const handleChangeEventName = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      const result = event.target.value.replace(/[^a-z]/gi, '')
+      setEventName(result)
+    },
+    []
+  )
+
   // make refresh request
   const handleRefresh = useCallback(() => {
     if (eventName && range && status === 'resolved' && !isRefreshing) {
@@ -113,7 +121,7 @@ const LeaderboardTable = () => {
                 className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
                 placeholder='Event Name'
                 value={eventName ?? ''}
-                onChange={(e) => setEventName(e.target.value)}
+                onChange={handleChangeEventName}
               />
             </div>
           </div>
@@ -172,7 +180,7 @@ const LeaderboardTable = () => {
             <tbody>
               {entities?.map((entity: any, index: number) => (
                 <tr
-                  key={entity?.id ?? index}
+                  key={(entity?.id ?? '') + (entity?.rank ?? index)}
                   className='bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-600'>
                   <td className='p-4 w-4'>
                     <div className='flex items-center'>{entity?.rank}</div>
