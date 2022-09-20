@@ -1,0 +1,8 @@
+.loading {
+  background: #4d545a5c;
+}
+
+.wide-td {
+  width: 200px;
+  overflow: hidden;
+}

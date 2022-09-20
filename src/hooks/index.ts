@@ -30,8 +30,8 @@ function asyncReducer<D, E>(
     case 'pending':
       return {
         status: 'pending',
-        data: null,
         error: null,
+        data: _state.data,
       }
     case 'resolved':
       return {
